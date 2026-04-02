@@ -2,20 +2,21 @@
 
 # Directories
 RTL_DIR    = rtl
+IMPORT_DIR = imports
 TEST_DIR   = test
 SYNTH_DIR  = synth
 BUILD_DIR  = build
 
 # Source files
-RTL_FILES  = $(RTL_DIR)/riscv_core.sv \
-             $(RTL_DIR)/memory.sv \
-             $(RTL_DIR)/riscv_top.sv \
-             $(RTL_DIR)/uart.v \
-             $(RTL_DIR)/uart_tx.v \
-             $(RTL_DIR)/uart_rx.v
+RTL_FILES  = $(RTL_DIR)/fifo_1r1w.sv \
+             $(RTL_DIR)/ram_1r1w_async.sv \
+             $(RTL_DIR)/sinusoid.sv \
+             $(RTL_DIR)/sinusoid.hex \
+             $(RTL_DIR)/top.sv \
+             $(IMPORT_DIR)/*
 
 # Top module
-TOP_MODULE = riscv_top
+TOP_MODULE = top
 
 # FPGA settings (iCEBreaker - iCE40UP5K)
 DEVICE     = up5k
@@ -125,7 +126,7 @@ clean-all: clean
 #-------------------------------------------------------------------------------
 .PHONY: help
 help:
-	@echo "RISC-V 5-Stage Pipelined Processor"
+	@echo "Sound Chip"
 	@echo ""
 	@echo "Simulation:"
 	@echo "  make sim              - Run cocotb simulation"
